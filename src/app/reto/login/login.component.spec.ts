@@ -1,0 +1,53 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+
+import { LoginComponent } from './login.component';
+
+describe('LoginComponent', () => {
+  let component: LoginComponent;
+  let fixture: ComponentFixture<LoginComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ LoginComponent ],
+      imports:[FormsModule]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(LoginComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('Testing de login desde boton TRUE', ()=> {
+    // Pasando valores a los atributos user y pwd
+    component.user='admin';
+    component.pwd='admin';
+
+    // Detectar el evento click del boton btnEnviar
+    const btnEnviar= fixture.debugElement.query(By.css('#btnEnviar'));
+    btnEnviar.nativeElement.click();
+
+    // Prueba
+    expect(component.login).toEqual(true);
+  })
+  it('Testing de login desde boton FALSE', ()=> {
+    // Pasando valores a los atributos user y pwd
+    component.user='jperez';
+    component.pwd='xxx';
+
+    // Detectar el evento click del boton btnEnviar
+    const btnEnviar= fixture.debugElement.query(By.css('#btnEnviar'));
+    btnEnviar.nativeElement.click();
+
+    // Prueba
+    expect(component.login).toEqual(false);
+  })
+
+
+});

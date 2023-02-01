@@ -1,0 +1,16 @@
+<h2>Login</h2>
+<section>
+  <article class="form-container">
+    <section class="">
+      <section class="form">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" id="username"[(ngModel)]="user">
+        </section>
+        <section class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" [(ngModel)]="pwd">
+        </section>
+        <input class="btn btn-primary" (click)="Logearse()" value="Iniciar sesion" id="btnEnviar">
+      </section>
+  </article>
+</section>
